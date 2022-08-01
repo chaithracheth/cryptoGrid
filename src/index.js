@@ -3,11 +3,29 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {Provider} from "react-redux";
+import {configureStore} from "@reduxjs/toolkit";
+import cryptoSlice from "./Reducer/cryptoSlice";
+import createSagaMiddleware from 'redux-saga'
+import rootSaga from "./Sagas/RootSaga";
+import store from "./store";
+
+// const saga = createSagaMiddleware()
+//
+// const store = configureStore({
+//     reducer:{
+//         crypdo:cryptoSlice
+//     },
+//     middleware:[saga]
+// })
+// saga.run(rootSaga)
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+      <Provider store={store}>
     <App />
+      </Provider>
   </React.StrictMode>
 );
 
